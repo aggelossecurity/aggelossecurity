@@ -1,0 +1,15 @@
+queue_rules:
+  - name: default
+    queue_conditions:
+      - "#approved-reviews-by>=1"
+    merge_conditions:
+      - check-success=test
+
+pull_request_rules:
+  - name: automatic merge
+    conditions:
+      - "#approved-reviews-by>=1"
+      - check-success=test
+    actions:
+      queue:
+        name: default
